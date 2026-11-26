@@ -456,6 +456,79 @@ body.rzing{cursor:col-resize;user-select:none}
   .tbtn{padding:6px 8px}
   .tdiv{display:none}
 }
+
+/* ===== Halaman utama layar penuh ===== */
+body.lp{padding-left:0;padding-right:0}
+.land .in{width:100%;max-width:1760px;margin:0 auto;padding-left:max(clamp(16px,4.5vw,88px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,4.5vw,88px),env(safe-area-inset-right,0px))}
+.land .nav{display:block;padding:0}
+.land .navin{display:flex;align-items:center;gap:20px;padding-block:14px}
+.herob{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:
+  radial-gradient(900px 520px at 88% 12%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%),
+  radial-gradient(700px 480px at 4% 100%,color-mix(in srgb,var(--hi) 14%,transparent),transparent 70%),var(--bg)}
+.herob .hero{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(32px,4.5vw,96px);min-height:calc(100vh - 68px);padding-block:clamp(36px,6vh,80px)}
+.hero h1{font-size:clamp(2.6rem,4.6vw,4.6rem)}
+.hero .lead{font-size:clamp(1.1rem,1.35vw,1.4rem)}
+.kick{display:inline-block;margin-bottom:18px;padding:5px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:13px}
+.land .section{padding:clamp(56px,8vw,112px) 0}
+.land .section.alt{background:var(--surface)}
+.land .features{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.land .plans{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ctab{background:var(--accent);color:var(--accent-fg);padding:clamp(48px,7vw,96px) 0;text-align:center}
+.ctab .in{display:grid;gap:22px;justify-items:center}
+.ctab h2{font-size:clamp(1.9rem,4vw,3.2rem);color:inherit;max-width:20em}
+.land .foot{display:block;padding:0;margin:0}
+.land .footin{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:26px}
+/* contoh tabel beranimasi */
+.dm{position:relative;padding:0;overflow:hidden;box-shadow:0 40px 90px -40px rgba(10,40,30,.45),var(--shadow);user-select:none}
+.dm-top{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line)}
+.dm-dots span{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--line);margin-right:5px}
+.dm-top b{font-family:var(--font-d);font-size:1.1rem;margin-right:auto}
+.dm-sav{font-size:12.5px;color:var(--muted)}
+.dm-sav.busy{color:var(--k1)}
+.dm-bar{display:flex;gap:6px;align-items:center;padding:10px 18px;flex-wrap:wrap}
+.dm-bar .sp{flex:1}
+.dm-add{padding:5px 13px;border-radius:8px;background:var(--accent);color:var(--accent-fg);font-weight:600;font-size:13px}
+.dm-tools{display:flex;gap:2px;padding:0 12px 8px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.dm-tools .tbtn{cursor:default}
+.dm-body{position:relative;height:clamp(300px,34vw,372px);overflow:hidden}
+.dm table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:clamp(14px,1.05vw,16px)}
+.dm th{text-align:left;font-size:12.5px;color:var(--muted);padding:0 12px;height:36px;background:var(--bg);border-bottom:1px solid var(--line);border-right:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dm th i{font-style:normal;font-family:var(--mono);font-size:11px;margin-right:6px;padding:1px 5px;border-radius:4px;background:var(--line)}
+.dm td{padding:0 12px;height:clamp(44px,3.4vw,52px);border-bottom:1px solid var(--line);border-right:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--surface)}
+.dm th:last-child,.dm td:last-child{border-right:0}
+.dm .dn{color:var(--muted);font-size:12px;text-align:center;padding:0}
+.dm tr{position:relative}
+.dm tr.newr td{animation:rowin .8s ease}
+@keyframes rowin{from{background:var(--accent-soft)}}
+.dm .ck{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--muted);display:inline-grid;place-items:center;vertical-align:middle;font-size:12px;color:var(--accent-fg);transition:background .2s}
+.dm .ck.on{background:var(--accent);border-color:var(--accent);animation:pop .3s ease}
+@keyframes pop{50%{transform:scale(1.25)}}
+.caret::after{content:"";display:inline-block;width:1.5px;height:1.1em;background:var(--accent);margin-left:1px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.dm-kan{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:16px;background:var(--bg);align-content:start}
+.kcol2{display:grid;gap:8px;align-content:start;min-width:0}
+.kh{display:flex;justify-content:space-between;align-items:center;padding:0 2px}
+.kc{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;gap:2px;position:relative}
+.kc small{color:var(--muted)}
+.kc.lift{z-index:3;box-shadow:var(--shadow);border-color:var(--accent);transition:transform .95s cubic-bezier(.4,0,.2,1)}
+.kc.drop{animation:dropin .5s ease}
+@keyframes dropin{from{transform:scale(1.06);box-shadow:var(--shadow)}}
+.dm-cur{position:absolute;left:0;top:0;z-index:6;pointer-events:none;transition:transform .95s cubic-bezier(.4,0,.2,1);will-change:transform}
+.dm-cur svg{display:block;transition:transform .15s;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
+.dm-cur.click svg{transform:scale(.82)}
+.dm-cur .tag{position:absolute;left:16px;top:18px;padding:2px 8px;border-radius:6px;background:var(--k5);color:#fff;font-size:11.5px;font-weight:700;white-space:nowrap}
+.dm-pop{position:absolute;z-index:5;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:6px;display:grid;gap:2px;min-width:150px}
+.dm-pop>span{padding:4px 6px;border-radius:7px}
+.dm-pop>span.hv{background:var(--accent-soft)}
+@media (max-width:1100px){.land .plans{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:860px){
+  .herob .hero{grid-template-columns:minmax(0,1fr);min-height:0;padding-block:36px 44px}
+}
+@media (max-width:560px){
+  .dm .c-a{display:none}
+  .dm-body{height:300px}
+  .dm-cur .tag{display:none}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 
@@ -751,37 +824,112 @@ function curBase(){var h=location.hash.slice(1);if(!D||h.indexOf('base-')!==0)re
 
 /* ---------- Landing ---------- */
 function chip(txt,i){return '<span class="chip" style="--k:var(--k'+i+')">'+esc(txt)+'</span>'}
+var DEMO=0,SN=['Belum mulai','Dikerjakan','Selesai'];
+function demoRows(){return [
+  {id:'r1',n:'Riset pengguna',a:'Dewi',s:1,d:20261204,dl:'4 Des 2026',c:0},
+  {id:'r2',n:'Rancang halaman harga',a:'Raka',s:0,d:20261210,dl:'10 Des 2026',c:0},
+  {id:'r3',n:'Tulis panduan pengguna',a:'Bagas',s:2,d:20261120,dl:'20 Nov 2026',c:1},
+  {id:'r4',n:'Siapkan laporan kuartal',a:'Dewi',s:0,d:20261215,dl:'15 Des 2026',c:0}];}
+function dmGrid(rows){
+  return rows.map(function(r,i){return '<tr data-k="'+r.id+'"><td class="dn">'+(i+1)+'</td><td class="c-n">'+esc(r.n)+'</td><td class="c-a">'+esc(r.a)+'</td><td class="c-s">'+(r.s>=0?chip(SN[r.s],r.s):'')+'</td><td class="c-d">'+esc(r.dl)+'</td><td class="c-c"><span class="ck'+(r.c?' on':'')+'">'+(r.c?'✓':'')+'</span></td></tr>'}).join('');
+}
+function demoHTML(){
+  return '<div class="card demo dm" id="demo" role="img" aria-label="Animasi contoh penggunaan tabel: menambah catatan, memilih status, mencentang tugas, mengurutkan, dan memindahkan kartu di Kanban">'+
+  '<div class="dm-top"><span class="dm-dots"><span></span><span></span><span></span></span><b>Pelacak Proyek</b><span class="dm-sav">Tersimpan</span></div>'+
+  '<div class="dm-bar"><span class="pill on" id="dm-pg">Grid</span><span class="pill" id="dm-pk">Kanban</span><span class="pill">Tenggat Desember</span><span class="sp"></span><span class="dm-add">+ Catatan</span></div>'+
+  '<div class="dm-tools"><span class="tbtn">Sembunyikan kolom</span><span class="tbtn">Filter</span><span class="tbtn">Kelompokkan</span><span class="tbtn" id="dm-sort">Urutkan</span></div>'+
+  '<div class="dm-body"><div id="dm-grid"><table><colgroup><col style="width:44px"><col><col style="width:19%" class="c-a"><col style="width:21%"><col style="width:19%"><col style="width:64px"></colgroup><thead><tr><th></th><th><i>Aa</i>Tugas</th><th class="c-a"><i>Aa</i>Penanggung jawab</th><th><i>Pil</i>Status</th><th><i>Tgl</i>Tenggat</th><th><i>✓</i></th></tr></thead><tbody id="dm-tb">'+dmGrid(demoRows())+'</tbody></table></div><div class="dm-kan" id="dm-kan" hidden></div></div>'+
+  '<div class="dm-pop" hidden></div><div class="dm-cur" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M3 2l15 8-6.5 1.8L8.5 18z" fill="#fff" stroke="#10201a" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="tag">Sinta</span></div></div>';
+}
+function demoStart(){
+  var root=document.getElementById('demo');if(!root)return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var tok=++DEMO,alive=function(){return tok===DEMO&&document.body.contains(root)};
+  var cur=root.querySelector('.dm-cur'),tb=root.querySelector('#dm-tb'),pop=root.querySelector('.dm-pop'),sav=root.querySelector('.dm-sav'),gv=root.querySelector('#dm-grid'),kv=root.querySelector('#dm-kan'),pg=root.querySelector('#dm-pg'),pk=root.querySelector('#dm-pk'),sb=root.querySelector('#dm-sort');
+  var rows=demoRows();
+  var sleep=function(ms){return new Promise(function(r){setTimeout(r,ms)})};
+  async function w(ms){await sleep(ms);while(document.hidden&&alive())await sleep(300);if(!alive())throw 0}
+  var pos=function(el,fx,fy){var rr=root.getBoundingClientRect(),r=el.getBoundingClientRect();return [r.left-rr.left+r.width*fx,r.top-rr.top+r.height*fy]};
+  async function mv(el,fx,fy,ms){if(!el||!el.offsetParent)return;var p=pos(el,fx==null?.5:fx,fy==null?.5:fy);cur.style.transform='translate('+p[0]+'px,'+p[1]+'px)';await w(ms||950)}
+  async function clk(){cur.classList.add('click');await w(170);cur.classList.remove('click');await w(130)}
+  async function type(el,txt){if(!el)return;el.textContent='';el.classList.add('caret');for(var i=0;i<txt.length;i++){el.textContent=txt.slice(0,i+1);await w(55)}el.classList.remove('caret');await w(250)}
+  var render=function(){tb.innerHTML=dmGrid(rows)};
+  var q=function(id,c){var tr=tb.querySelector('tr[data-k="'+id+'"]');return tr?tr.querySelector(c):null};
+  function flip(fn){
+    var m={};tb.querySelectorAll('tr').forEach(function(tr){m[tr.dataset.k]=tr.getBoundingClientRect().top});fn();
+    tb.querySelectorAll('tr').forEach(function(tr){var o=m[tr.dataset.k];if(o==null)return;var dy=o-tr.getBoundingClientRect().top;if(!dy)return;tr.style.transition='none';tr.style.transform='translateY('+dy+'px)';tr.getBoundingClientRect();tr.style.transition='transform .7s cubic-bezier(.4,0,.2,1)';tr.style.transform=''});
+  }
+  function buildKan(drop){
+    kv.innerHTML=SN.map(function(n,k){var it=rows.filter(function(r){return r.s===k});
+      return '<div class="kcol2" data-k="'+k+'"><div class="kh">'+chip(n,k)+'<span class="muted">'+it.length+'</span></div>'+it.map(function(r){return '<div class="kc'+(drop===r.id?' drop':'')+'" data-k="'+r.id+'"><b>'+esc(r.n)+'</b><small>'+esc(r.a)+'</small></div>'}).join('')+'</div>'}).join('');
+  }
+  function reset(){
+    rows=demoRows();render();gv.hidden=false;kv.hidden=true;pg.classList.add('on');pk.classList.remove('on');
+    sb.classList.remove('act');sb.innerHTML='Urutkan';pop.hidden=true;sav.textContent='Tersimpan';sav.classList.remove('busy');
+    cur.style.transition='none';cur.style.transform='translate('+Math.round(root.clientWidth*.62)+'px,70px)';cur.getBoundingClientRect();cur.style.transition='';
+  }
+  async function saved(){sav.textContent='Menyimpan…';sav.classList.add('busy');await w(600);sav.textContent='Tersimpan';sav.classList.remove('busy')}
+  async function run(){
+    await w(1400);
+    for(;;){
+      reset();await w(900);
+      /* 1. tambah catatan */
+      await mv(root.querySelector('.dm-add'));await clk();
+      rows.push({id:'r5',n:'',a:'',s:-1,d:20261218,dl:'',c:0});render();tb.lastChild.classList.add('newr');await w(500);
+      await mv(q('r5','.c-n'),.25);await clk();await type(q('r5','.c-n'),'Kirim penawaran klien');rows[4].n='Kirim penawaran klien';
+      await mv(q('r5','.c-a'),.25);await clk();await type(q('r5','.c-a'),'Sinta');rows[4].a='Sinta';
+      /* 2. pilih status */
+      var cs=q('r5','.c-s');await mv(cs,.35);await clk();
+      var pp=pos(cs,0,1);pop.innerHTML=SN.map(function(n,k){return '<span data-k="'+k+'">'+chip(n,k)+'</span>'}).join('');pop.hidden=false;
+      var ph=pop.offsetHeight,top=pp[1]+4;if(top+ph>root.clientHeight-8)top=pos(cs,0,0)[1]-ph-4;pop.style.left=Math.round(pp[0]+8)+'px';pop.style.top=Math.round(top)+'px';await w(500);
+      var op=pop.querySelector('span[data-k="1"]');await mv(op,.4,.5,700);op.classList.add('hv');await clk();
+      pop.hidden=true;rows[4].s=1;render();await w(350);
+      /* 3. tanggal */
+      await mv(q('r5','.c-d'),.25);await clk();await type(q('r5','.c-d'),'18 Des 2026');rows[4].dl='18 Des 2026';await saved();
+      /* 4. centang */
+      await mv(q('r4','.ck'));await clk();rows[3].c=1;rows[3].s=2;render();await saved();await w(500);
+      /* 5. urutkan */
+      await mv(sb);await clk();sb.classList.add('act');sb.innerHTML='Urutkan <span class="tn">1</span>';
+      flip(function(){rows.sort(function(a,b){return a.d-b.d});render()});await w(1500);
+      /* 6. kanban */
+      await mv(pk);await clk();pk.classList.add('on');pg.classList.remove('on');gv.hidden=true;kv.hidden=false;buildKan();await w(1100);
+      var card=kv.querySelector('.kc[data-k="r2"]'),col=kv.querySelector('.kcol2[data-k="1"]');
+      if(card&&col){
+        await mv(card,.3,.5,800);await clk();card.classList.add('lift');
+        var p1=pos(card,.3,.5),p2=pos(col,.5,.5);
+        card.style.transform='translate('+Math.round(p2[0]-p1[0])+'px,'+Math.round(p2[1]-p1[1])+'px) rotate(-2deg)';
+        await mv(col,.5,.5,900);rows.filter(function(r){return r.id==='r2'})[0].s=1;buildKan('r2');await saved();await w(1500);
+      }
+      /* 7. kembali ke grid */
+      await mv(pg);await clk();pk.classList.remove('on');pg.classList.add('on');kv.hidden=true;gv.hidden=false;render();await w(2600);
+    }
+  }
+  run().catch(function(){});
+}
 function landing(){
   var acts=U?'<a class="btn primary" href="#beranda">Buka Tabelo</a>':'<a class="btn ghost" href="#masuk">Masuk</a><a class="btn primary" href="#daftar">Daftar gratis</a>';
-  return '<div class="wrap">'+
-  '<header class="nav"><a class="brand" href="#">'+LOGO+'<span>Tabelo</span></a><nav class="links"><button class="btn ghost sm" data-act="scroll" data-id="fitur">Fitur</button><button class="btn ghost sm" data-act="scroll" data-id="harga">Harga</button></nav><div class="actions">'+acts+'</div></header>'+
-  '<section class="hero"><div><h1>Tabel yang bekerja seperti <mark>aplikasi</mark></h1>'+
+  var cta=U?'#beranda':'#daftar',ctl=U?'Buka Tabelo':'Daftar gratis';
+  return '<div class="land">'+
+  '<header class="nav"><div class="in navin"><a class="brand" href="#">'+LOGO+'<span>Tabelo</span></a><nav class="links"><button class="btn ghost sm" data-act="scroll" data-id="fitur">Fitur</button><button class="btn ghost sm" data-act="scroll" data-id="harga">Harga</button></nav><div class="actions">'+acts+'</div></div></header>'+
+  '<section class="herob"><div class="in hero"><div><span class="kick">Spreadsheet bertemu database</span><h1>Tabel yang bekerja seperti <mark>aplikasi</mark></h1>'+
   '<p class="lead">Tabelo memadukan kemudahan spreadsheet dengan struktur database. Kelola proyek, klien, dan stok di satu tempat tanpa menulis kode.</p>'+
-  '<div class="cta"><a class="btn primary lg" href="'+(U?'#beranda':'#daftar')+'">'+(U?'Buka Tabelo':'Daftar gratis')+'</a><button class="btn lg" data-act="scroll" data-id="fitur">Lihat fitur</button></div>'+
-  '<p class="fine">Tanpa kartu kredit. Pada versi demo, data tersimpan hanya di browser Anda.</p></div>'+
-  '<div class="card demo" aria-label="Contoh tampilan tabel"><div class="demohead"><b>Pelacak Proyek</b><span class="muted" style="font-size:13px">Contoh tampilan</span></div>'+
-  '<div class="demotabs"><span class="pill on">Grid</span><span class="pill">Kanban</span><span class="pill">Tenggat Desember</span></div>'+
-  '<div class="gridwrap"><table class="grid"><thead><tr><th><i>Aa</i>Tugas</th><th><i>Aa</i>Penanggung jawab</th><th><i>Pil</i>Status</th><th><i>Tgl</i>Tenggat</th></tr></thead><tbody>'+
-  '<tr><td style="padding:9px 10px">Riset pengguna</td><td style="padding:9px 10px">Dewi</td><td class="cs">'+chip('Dikerjakan',1)+'</td><td style="padding:9px 10px">4 Des 2026</td></tr>'+
-  '<tr><td style="padding:9px 10px">Rancang halaman harga</td><td style="padding:9px 10px">Raka</td><td class="cs">'+chip('Belum mulai',0)+'</td><td style="padding:9px 10px">10 Des 2026</td></tr>'+
-  '<tr><td style="padding:9px 10px">Tulis panduan pengguna</td><td style="padding:9px 10px">Bagas</td><td class="cs">'+chip('Selesai',2)+'</td><td style="padding:9px 10px">20 Nov 2026</td></tr>'+
-  '<tr><td style="padding:9px 10px">Siapkan laporan kuartal</td><td style="padding:9px 10px">Dewi</td><td class="cs">'+chip('Belum mulai',0)+'</td><td style="padding:9px 10px">15 Des 2026</td></tr>'+
-  '</tbody></table></div></div></section>'+
-  '<section class="section" id="fitur"><h2>Semua yang dibutuhkan tim kecil untuk merapikan data</h2><p class="sub">Mulai dari template, ubah sesuai kebutuhan, lalu lihat data yang sama dengan cara berbeda.</p><div class="features">'+
+  '<div class="cta"><a class="btn primary lg" href="'+cta+'">'+ctl+'</a><button class="btn lg" data-act="scroll" data-id="fitur">Lihat fitur</button></div>'+
+  '<p class="fine">Tanpa kartu kredit. Pada versi demo, data tersimpan hanya di browser Anda.</p></div>'+demoHTML()+'</div></section>'+
+  '<section class="section alt" id="fitur"><div class="in"><h2>Semua yang dibutuhkan tim kecil untuk merapikan data</h2><p class="sub">Mulai dari template, ubah sesuai kebutuhan, lalu lihat data yang sama dengan cara berbeda.</p><div class="features">'+
   feat('Grid dan Kanban','Lihat data sebagai tabel atau papan status, lalu pindah kapan saja.')+
-  feat('Tipe kolom lengkap','Teks, angka, tanggal, pilihan berwarna, dan kotak centang.')+
+  feat('Tipe kolom lengkap','Teks, angka, mata uang, tanggal, rumus, lampiran, tautan antar tabel, dan banyak lagi.')+
+  feat('Filter, urutkan, kelompokkan','Simpan sebagai tampilan sendiri, lengkap dengan warna dan tinggi baris.')+
   feat('Template siap pakai','Pelacak proyek, daftar klien, kalender konten, dan stok toko.')+
-  feat('Urutkan dan cari','Klik judul kolom untuk mengurutkan, ketik di kolom cari untuk menyaring.')+
+  feat('Analisis otomatis','Grafik dan ringkasan dari seluruh kolom dan baris tabel Anda.')+
   feat('Impor CSV','Bawa data dari Excel atau Google Sheets dan langsung jadi base.')+
-  feat('Terang dan gelap','Tampilan mengikuti pengaturan perangkat atau pilihan Anda.')+
-  '</div></section>'+
-  '<section class="section" id="harga"><h2>Harga yang jelas untuk setiap ukuran tim</h2><p class="sub">Prototipe ini belum memproses pembayaran. Paket dan harga berikut hanya contoh tampilan.</p><div class="plans">'+
+  '</div></div></section>'+
+  '<section class="section" id="harga"><div class="in"><h2>Harga yang jelas untuk setiap ukuran tim</h2><p class="sub">Prototipe ini belum memproses pembayaran. Paket dan harga berikut hanya contoh tampilan.</p><div class="plans">'+
   plan('Gratis','Rp0','','Untuk mencoba dan proyek pribadi',['3 base','1.000 catatan per tabel','Grid dan Kanban','Impor CSV'],false)+
   plan('Tim','Rp89.000',' / pengguna / bulan','Untuk tim yang bekerja bersama',['Base tanpa batas','50.000 catatan per tabel','Berbagi dan komentar','Riwayat revisi 1 tahun'],true)+
   plan('Bisnis','Rp189.000',' / pengguna / bulan','Untuk organisasi dengan kebutuhan kontrol',['Catatan tanpa batas praktis','Hak akses per tabel','Log aktivitas','Dukungan prioritas'],false)+
-  '</div></section>'+
-  '<section class="card cta-end"><h2>Rapikan data pertama Anda hari ini</h2><a class="btn primary lg" href="'+(U?'#beranda':'#daftar')+'">'+(U?'Buka Tabelo':'Daftar gratis')+'</a></section>'+
-  '<footer class="foot"><span>© 2026 Tabelo. Prototipe untuk demonstrasi.</span><span>Dibuat dengan HTML, CSS, dan JavaScript biasa.</span></footer></div>';
+  '</div></div></section>'+
+  '<section class="ctab"><div class="in"><h2>Rapikan data pertama Anda hari ini</h2><a class="btn lg" href="'+cta+'">'+ctl+'</a></div></section>'+
+  '<footer class="foot"><div class="in footin"><span>© 2026 Tabelo. Prototipe untuk demonstrasi.</span><span>Dibuat dengan HTML, CSS, dan JavaScript biasa.</span></div></footer></div>';
 }
 function feat(h,p){return '<div class="feat"><h3>'+h+'</h3><p>'+p+'</p></div>'}
 function plan(n,p,per,d,items,pick){
@@ -1964,7 +2112,7 @@ function analysisPage(){
 function route(){
   var h=location.hash.slice(1);closeModal();closePop();closeDrawer();SEL={};menuOpen=false;
   var app=['beranda','berbintang','dibagikan','workspace','analisis'].indexOf(h)>-1||h.indexOf('base-')===0;
-  var html;
+  var html,lp=false;
   if(app){
     if(!U){location.replace('#masuk');return}
     if(h.indexOf('base-')===0){var b=curBase();if(!b){location.replace('#beranda');return}b.opened=Date.now();save()}
@@ -1972,8 +2120,8 @@ function route(){
   }else if(h==='daftar'||h==='masuk'){
     if(U){location.replace('#beranda');return}
     html=authView(h);
-  }else html=landing();
-  $('#root').innerHTML=html;
+  }else{html=landing();lp=true}
+  $('#root').innerHTML=html;document.body.classList.toggle('lp',lp);if(lp)setTimeout(demoStart,300);
   if(pendingScroll){var el=document.getElementById(pendingScroll);pendingScroll=null;if(el)el.scrollIntoView();}
   else window.scrollTo(0,0);
 }
