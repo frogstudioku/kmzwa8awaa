@@ -530,6 +530,9 @@ body.lp{padding-left:0;padding-right:0}
   .dm-body{height:300px}
   .dm-cur .tag{display:none}
 }
+
+.tab-ed{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:14px;padding:4px 6px;margin-left:-6px;border-radius:6px;align-self:center}
+.tab-ed:hover{background:var(--accent-soft);color:var(--fg)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 
@@ -1132,7 +1135,7 @@ function baseView(b){
   return '<div class="bhead"><a class="btn ghost sm" href="#beranda">← Beranda</a><input class="bname" id="bname" value="'+esc(b.name)+'" aria-label="Nama base">'+
   '<button class="iconbtn" data-act="star" data-id="'+b.id+'" aria-pressed="'+b.starred+'" aria-label="'+(b.starred?'Hapus bintang':'Beri bintang')+'">'+(b.starred?'★':'☆')+'</button>'+
   '<button class="btn sm" data-act="analyze">Analisis</button><button class="btn sm" data-act="delbase">Hapus base</button></div>'+
-  '<div class="tabs">'+b.tables.map(function(x,i){return '<button class="tab'+(i===b.tab?' on':'')+'" data-act="tab" data-i="'+i+'">'+esc(x.name)+'</button>'}).join('')+'<button class="tab add" data-act="addtable">+ Tabel</button></div>'+
+  '<div class="tabs">'+b.tables.map(function(x,i){return '<button class="tab'+(i===b.tab?' on':'')+'" data-act="tab" data-i="'+i+'" title="Klik dua kali untuk mengubah nama">'+esc(x.name)+'</button>'+(i===b.tab?'<button class="tab-ed" data-act="tabren" data-i="'+i+'" aria-label="Ubah nama tabel" title="Ubah nama tabel">✎</button>':'')}).join('')+'<button class="tab add" data-act="addtable">+ Tabel</button></div>'+
   '<div id="btools">'+toolsHTML(b,t)+'</div><div id="bcontent">'+contentHTML(b,t)+'</div>';
 }
 function toolsHTML(b,t){
@@ -1253,6 +1256,7 @@ function toggleSide(){
 function viewSel(i){var b=curBase();if(!b)return;var t=b.tables[b.tab];if(!t.views[i])return;t.vi=i;SEL={};save();closePop();drawTools();drawContent()}
 function viewNew(){var b=curBase();if(!b)return;var t=b.tables[b.tab];curView(t);t.views.push({id:uid(),name:'Tampilan '+(t.views.length+1),cfg:newCfg()});t.vi=t.views.length-1;SEL={};save();closePop();drawTools();drawContent();toast('Tampilan baru dibuat.')}
 function viewDup(){var b=curBase();if(!b)return;var t=b.tables[b.tab],v=curView(t);t.views.push({id:uid(),name:v.name+' (salinan)',cfg:JSON.parse(JSON.stringify(cfg(t)))});t.vi=t.views.length-1;save();closePop();drawTools();drawContent();toast('Tampilan digandakan.')}
+function tabRenameModal(i){var b=curBase();if(!b||!b.tables[i])return;closePop();modal('<h2>Ubah nama tabel</h2><form id="tabform" data-i="'+i+'"><label class="lbl">Nama tabel<input name="name" maxlength="60" value="'+esc(b.tables[i].name)+'"></label><div class="mactions"><button type="button" class="btn" data-act="closemodal">Batal</button><button class="btn primary" type="submit">Simpan</button></div></form>');var inp=$('#tabform input');if(inp)inp.select()}
 function viewRenameModal(){var b=curBase();if(!b)return;var v=curView(b.tables[b.tab]);closePop();modal('<h2>Ubah nama tampilan</h2><form id="renameform"><label class="lbl">Nama<input name="name" maxlength="60" value="'+esc(v.name)+'"></label><div class="mactions"><button type="button" class="btn" data-act="closemodal">Batal</button><button class="btn primary" type="submit">Simpan</button></div></form>')}
 function viewDelModal(){var b=curBase();if(!b)return;var t=b.tables[b.tab];if(t.views.length<2)return;closePop();modal('<h2>Hapus tampilan?</h2><p class="muted">Tampilan “'+esc(curView(t).name)+'” dihapus. Data tabel tidak berubah.</p><div class="mactions"><button class="btn" data-act="closemodal">Batal</button><button class="btn primary" data-act="confirmvdel">Hapus</button></div>')}
 function doViewDel(){var b=curBase();if(!b)return;var t=b.tables[b.tab];if(t.views.length<2)return;t.views.splice(t.vi,1);t.vi=0;SEL={};save();closeModal();drawTools();drawContent()}
@@ -2180,6 +2184,7 @@ document.addEventListener('submit',function(e){
   if(f.id==='fieldform')return submitField(f);
   if(f.id==='pickform')return submitPick(f);
   if(f.id==='scanform')return submitScan(f);
+  if(f.id==='tabform'){var tb2=curBase(),ti=+f.dataset.i;if(tb2&&tb2.tables[ti]){var nn=f.name.value.trim();if(!nn){toast('Isi nama tabel.');return}tb2.tables[ti].name=nn;save();closeModal();$('#main').innerHTML=baseView(tb2)}return}
   if(f.id==='renameform'){var rb=curBase();if(rb){var rv=curView(rb.tables[rb.tab]);rv.name=f.name.value.trim()||rv.name;save();closeModal();drawTools()}return}
 });
 document.addEventListener('keydown',function(e){
@@ -2222,6 +2227,7 @@ document.addEventListener('click',function(e){
     case 'hidefield':if(b){var hc=cfg(b.tables[b.tab]);if(hc.hidden.indexOf(a.dataset.f)<0)hc.hidden.push(a.dataset.f);closeModal();applyCfg()}break;
     case 'groupfield':if(b){var gc=cfg(b.tables[b.tab]);gc.group=a.dataset.f;gc.gc={};closeModal();applyCfg()}break;
     case 'side':toggleSide();break;
+    case 'tabren':tabRenameModal(+a.dataset.i);break;
     case 'pop':togglePop(a.dataset.k);break;
     case 'popadd':popAdd(a.dataset.k);break;
     case 'popdel':popDel(a.dataset.k,+a.dataset.i);break;
@@ -2255,7 +2261,7 @@ document.addEventListener('click',function(e){
     case 'tm':AN.tm=a.dataset.v;redrawAn();break;
     case 'analyze':if(b){var bt=b.tables[b.tab];AN.bid=b.id;AN.tid=bt.id;anDefaults(bt);go('analisis')}break;
     case 'openbase':var ob=anBase();if(ob){var oi=ob.tables.map(function(x){return x.id}).indexOf(AN.tid);ob.tab=oi<0?0:oi;save();go('base-'+ob.id)}break;
-    case 'tab':if(b){b.tab=+a.dataset.i;SEL={};closePop();closeDrawer();save();$('#main').innerHTML=baseView(b)}break;
+    case 'tab':if(b&&+a.dataset.i!==b.tab){b.tab=+a.dataset.i;SEL={};closePop();closeDrawer();save();$('#main').innerHTML=baseView(b)}break;
     case 'addtable':
       if(b){b.tables.push(mkTable('Tabel '+(b.tables.length+1),[{n:'Nama',t:'text'},{n:'Catatan',t:'text'}],[['',''],['','']]));b.tab=b.tables.length-1;SEL={};closePop();closeDrawer();save();$('#main').innerHTML=baseView(b)}break;
     case 'view':if(b){b.view=a.dataset.v;closePop();save();drawTools();drawContent()}break;
@@ -2295,6 +2301,7 @@ function endRz(){if(!RZ)return;var r=RZ;RZ=null;document.body.classList.remove('
 document.addEventListener('pointerup',endRz);document.addEventListener('pointercancel',endRz);
 window.addEventListener('resize',placePop);
 document.addEventListener('scroll',placePop,true);
+document.addEventListener('dblclick',function(e){var tt=e.target.closest&&e.target.closest('.tab[data-i]');if(tt)tabRenameModal(+tt.dataset.i)});
 window.addEventListener('hashchange',route);
 route();
 })();
