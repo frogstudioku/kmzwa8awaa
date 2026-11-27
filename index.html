@@ -363,7 +363,7 @@ table.grid{border-collapse:separate;border-spacing:0;width:100%;min-width:640px}
 /* ===== Grid ala spreadsheet, toolbar, panel ===== */
 .app.sc{grid-template-columns:minmax(0,1fr)}
 .app.sc .side{display:none}
-.app.sc .main{padding-left:0}
+.app.sc .main{padding-left:clamp(16px,3vw,40px);padding-right:clamp(16px,3vw,40px)}
 .tools{row-gap:8px}
 .tbtn{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:8px;border:1px solid transparent;background:transparent;font-weight:600;font-size:13px;color:var(--muted);cursor:pointer;white-space:nowrap}
 .tbtn:hover,.tbtn[aria-expanded=true]{background:var(--accent-soft);color:var(--fg)}
